@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: black;
+    background: linear-gradient(155deg, rgba(0, 0, 110, 1) 0%, rgba(0, 0, 0, 1) 100%);
 }
 
 .portfolio-container {
@@ -82,6 +82,7 @@ body {
     height: 100%;
     z-index: -1; /* Send behind the portfolio content */
     pointer-events: none; /* Allow interactions with content on top */
+    background-color: transparent;
 }
 
 #welcome-btn {
@@ -103,6 +104,24 @@ body {
     color:#fff;
     font-size: 20px;
     font-weight: bold;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.name-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: white;
+    z-index: 1000;
+}
+
+.name {
+    display: grid;
+    font-size: 50px;
+    font-family:'Roboto', sans-serif;
 }

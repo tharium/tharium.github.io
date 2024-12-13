@@ -3,61 +3,106 @@ import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/thr
 // Check JS is Connected
 console.log('JS Connected');
 
-// Get the canvas
-const canvas = document.getElementById('particle-background');
+let scene, camera, renderer, particles, clock;
 
-// Set up renderer, scene, and camera
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-document.body.appendChild(renderer.domElement);
+function init() {
+    // Get the canvas element from the DOM
+    const canvas = document.getElementById('particle-background');
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 50;
+    // Create the scene
+    scene = new THREE.Scene();
 
-// Create particles
-const particleCount = 500;
-const geometry = new THREE.BufferGeometry();
-const positions = new Float32Array(particleCount * 3);
+    // Create a camera
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 8;
+    camera.position.y = 0;
+    camera.position.x = 0;
+    camera.rotation.x = 0.3;
+    camera.lookAt(scene.position);
 
-for (let i = 0; i < particleCount * 3; i++) {
-    positions[i] = (Math.random() - 0.5) * 100;
+    // Create the renderer and attach it to the canvas
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // Create particles
+    const particleCount = 1500;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 10; // x
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 10; // y
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 10; // z
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    // Generate colors for particles
+    const colors = [];
+    for (let i = 0; i < particleCount; i++) {
+        if(i % 3 == 0){
+            const color = new THREE.Color(147, 245, 219);
+            colors.push(color.r, color.g, color.b);
+        }else{
+            colors.push(255, 255, 255);
+        }
+    }
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+    const material = new THREE.PointsMaterial({
+        vertexColors: true,
+        size: 0.01,
+    });
+
+    particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    // Clock for animation timing
+    clock = new THREE.Clock();
+
+    // Add resize listener
+    window.addEventListener('resize', onWindowResize, false);
+
+    animate();
 }
-geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-const material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.2 });
-const particles = new THREE.Points(geometry, material);
-scene.add(particles);
-
-// Resize handler
+// Handle window resize
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
-window.addEventListener('resize', onWindowResize);
 
-// Animate and add cursor interaction
-let mouseX = 0, mouseY = 0;
-
-document.addEventListener('mousemove', (event) => {
-    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-});
-
+// Animate particles
 function animate() {
-    particles.rotation.x += 0.001;
-    particles.rotation.y += 0.001;
+    requestAnimationFrame(animate);
 
-    particles.position.x += (mouseX * 10 - particles.position.x) * 0.05;
-    particles.position.y += (mouseY * 10 - particles.position.y) * 0.05;
+    const time = clock.getElapsedTime();
+
+    const positionsArray = particles.geometry.attributes.position.array;
+    for (let i = 0; i < positionsArray.length; i += 3) {
+
+        const scaledTime = time * 0.1;
+
+        positionsArray[i + 1] = Math.sin(scaledTime + i * 0.1) * 2; // Y oscillation
+        positionsArray[i] = Math.cos(scaledTime + i * 0.2) * 2; // X oscillation
+
+
+        // const radius = i * 0.2; // Gradual outward movement
+        // const angle = time + i * 0.2;
+        // const x = positionsArray[i];
+        // positionsArray[i * 3 + 0] = Math.cos(angle) * radius; // X position
+        // positionsArray[i * 3 + 1] = Math.sin(time + i * 0.1) * 2; // Y oscillation
+        // positionsArray[i * 3 + 2] = Math.sin(angle) * radius; // Z position
+    }
+
+    particles.geometry.attributes.position.needsUpdate = true;
 
     renderer.render(scene, camera);
-    requestAnimationFrame(animate);
 }
 
-animate();
+// Run the script
+init();
 
 document.getElementById('welcome-btn').addEventListener('click', function() {
     document.getElementById('welcome-message').style.display = 'none';
