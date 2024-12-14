@@ -107,9 +107,25 @@ init();
 document.getElementById('welcome-btn').addEventListener('click', function() {
     document.getElementById('welcome-message').style.display = 'none';
     document.getElementById('portfolio-container').style.display = 'grid';
+    document.getElementById('description-area').style.display = 'flex';
 });
 
 const button = document.querySelector('.button');
     button.addEventListener('click', () => {
         button.classList.toggle('active');
+    });
+
+    const projectPanels = document.querySelectorAll('.project-panel');
+    const descriptionElement = document.getElementById('dynamic-description');
+    
+    // Add hover event listeners to each project panel
+    projectPanels.forEach((panel) => {
+        panel.addEventListener('mouseover', () => {
+            const description = panel.querySelector('.project-description').textContent.trim();
+            descriptionElement.textContent = description;
+        });
+    
+        panel.addEventListener('mouseout', () => {
+            descriptionElement.textContent = "Hover over a project to see its description.";
+        });
     });

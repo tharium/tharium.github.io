@@ -41,29 +41,46 @@
         <button id="welcome-btn">Projects</button>
     </div>
 
-    <div class="portfolio-container" id="portfolio-container">
-        <!-- Project 1 -->
-        <div class="project-panel">
-            <img src="/images/uml-screenshot.png" alt="UML Project Screenshot">
-            <a href="https://github.com/hbarton2/cscd350-f24-UnhandledExceptions" target="_blank">UML Editor</a>
-            <div class="project-text">UML Editor</div>
+    <div class="idk">
+
+        <div class="portfolio-container" id="portfolio-container">
+            <!-- Project 1 -->
+            <div class="project-panel" data-description="project1-description">
+                <img src="/images/uml-screenshot.png" alt="UML Project Screenshot">
+                <a href="https://github.com/hbarton2/cscd350-f24-UnhandledExceptions" target="_blank">UML Editor</a>
+                <div class="project-text">UML Editor</div>
+                <div class="project-description">
+                    <p>UML Editor is a group project from a software development course. It is built on Java/JavaFX.</p>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-panel" data-description="project2-description">
+                <img src="/images/date-time-project.PNG" alt="Tailwind Clock Screenshot">
+                <a href="https://tylerh-tailwind-date-time.netlify.app/public/" target="_blank">Tailwind Clock</a>
+                <div class="project-text">Tailwind Clock</div>
+                <div class="project-description">
+                    <p>Tailwind Clock is a simple web design project demonstrating styling using Tailwind.</p>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-panel" data-description="project3-description">
+                <img src="/images/sim-screenshot.PNG" alt="Flight Sim Screenshot">
+                <a href="" target="_blank">Project 3</a>
+                <div class="project-text">Flight Sim</div>>
+                <div class="project-description">
+                    <p>Flight Simulation is a Unity based project demonstrating (somewhat) realistic flight dynamics and controls. There is currently no link to this project.</p>
+                </div>
+            </div>
+
+            
         </div>
 
-        <!-- Project 2 -->
-        <div class="project-panel">
-            <img src="/images/date-time-project.PNG" alt="Tailwind Clock Screenshot">
-            <a href="https://tylerh-tailwind-date-time.netlify.app/public/" target="_blank">Tailwind Clock</a>
-            <div class="project-text">Tailwind Clock</div>
+        <div class="description-area" id="description-area">
+            <p id="dynamic-description">Hover over a project to see its description.</p>
         </div>
 
-        <!-- Project 3 -->
-        <div class="project-panel">
-            <img src="/images/sim-screenshot.PNG" alt="Flight Sim Screenshot">
-            <a href="" target="_blank">Project 3</a>
-            <div class="project-text">Flight Sim</div>
-        </div>
-
-        <!-- Add more projects as needed -->
     </div>
 
 </body>
