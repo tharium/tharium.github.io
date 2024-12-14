@@ -108,3 +108,8 @@ document.getElementById('welcome-btn').addEventListener('click', function() {
     document.getElementById('welcome-message').style.display = 'none';
     document.getElementById('portfolio-container').style.display = 'grid';
 });
+
+const button = document.querySelector('.button');
+    button.addEventListener('click', () => {
+        button.classList.toggle('active');
+    });
