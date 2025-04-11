@@ -5,18 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
     <link rel="manifest" href="/favicons/site.webmanifest">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Scripts -->
-    <script type="module" src="script.js" defer></script>
+    <script type="module" src="animation_script.js" defer></script>
+    <script src="script.js" defer></script>
     
     <title>Tyler Harris</title>
 </head>
@@ -28,60 +26,15 @@
     </div>
 
     <div class="button-container">
-        <button class="button">Links</button>
-        <div class="links-container">
+        <button class="button" id="links-button">Links</button>
+        <div class="links-container" id="links-dropdown">
             <a href="https://github.com/tharium">Github</a>
             <a href="https://www.linkedin.com/in/tyler-harris-49455827b">LinkedIn</a>
             <a href="https://codepen.io/tharium">CodePen</a>
         </div>
+        <a href="projects.html" class="project-link">Projects</a>
     </div>
 
-    <div id="welcome-message">
-        <p>I'm a CS major at Eastern Washington University, check out my projects!</p>
-        <button id="welcome-btn">Projects</button>
-    </div>
-
-    <div class="idk">
-
-        <div class="portfolio-container" id="portfolio-container">
-            <!-- Project 1 -->
-            <div class="project-panel" data-description="project1-description">
-                <img src="/images/uml-screenshot.png" alt="UML Project Screenshot">
-                <a href="https://github.com/hbarton2/cscd350-f24-UnhandledExceptions" target="_blank">UML Editor</a>
-                <div class="project-text">UML Editor</div>
-                <div class="project-description">
-                    <p>UML Editor is a group project from a software development course. It is built on Java/JavaFX.</p>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-panel" data-description="project2-description">
-                <img src="/images/date-time-project.PNG" alt="Tailwind Clock Screenshot">
-                <a href="https://tylerh-tailwind-date-time.netlify.app/public/" target="_blank">Tailwind Clock</a>
-                <div class="project-text">Tailwind Clock</div>
-                <div class="project-description">
-                    <p>Tailwind Clock is a simple web design project demonstrating styling using Tailwind.</p>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-panel" data-description="project3-description">
-                <img src="/images/sim-screenshot.PNG" alt="Flight Sim Screenshot">
-                <a href="" target="_blank">Project 3</a>
-                <div class="project-text">Flight Sim</div>>
-                <div class="project-description">
-                    <p>Flight Simulation is a Unity based project demonstrating (somewhat) realistic flight dynamics and controls. There is currently no link to this project.</p>
-                </div>
-            </div>
-
-            
-        </div>
-
-        <div class="description-area" id="description-area">
-            <p id="dynamic-description">Hover over a project to see its description.</p>
-        </div>
-
-    </div>
 
 </body>
 </html>
