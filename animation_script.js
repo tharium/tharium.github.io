@@ -33,14 +33,8 @@ function init() {
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    const colors = [];
-
-    colors.push(0,0,0);
-
-    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
     const material = new THREE.PointsMaterial({
-        vertexColors: true,
+        color: 0x000000,
         size: 0.01,
     });
 
