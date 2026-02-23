@@ -1,43 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
     const linksButton = document.getElementById('links-button');
     const linksDropdown = document.getElementById('links-dropdown');
+    const descriptionElement = document.getElementById('dynamic-description');
+    const projectCards = document.querySelectorAll('.project-card');
 
-    linksButton.addEventListener('click', function(e) {
+    // Toggle Links Dropdown
+    linksButton.addEventListener('click', (e) => {
         e.stopPropagation();
         linksDropdown.classList.toggle('show');
     });
 
-    document.addEventListener('click', function() {
-        linksDropdown.classList.remove('show');
-    });
+    document.addEventListener('click', () => linksDropdown.classList.remove('show'));
 
-    linksDropdown.addEventListener('click', function(e) {
-        e.stopPropagation();
-    });
-});
-
-const button = document.querySelector('.button');
-button.addEventListener('click', () => {
-    button.classList.toggle('active');
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const projectPanels = document.querySelectorAll('.project-panel');
-    const descriptionElement = document.getElementById('dynamic-description');
-    const defaultMessage = "Hover over a project to see its description.";
-
-    descriptionElement.textContent = defaultMessage;
-
-    projectPanels.forEach(panel => {
-        panel.addEventListener('mouseenter', function() {
-            const description = this.querySelector('.project-description p').textContent;
-            descriptionElement.textContent = description;
-            descriptionElement.style.opacity = '1';
+    // Handle Hover Descriptions
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const desc = this.getAttribute('data-description');
+            descriptionElement.textContent = desc;
+            descriptionElement.style.color = "#000";
         });
 
-        panel.addEventListener('mouseleave', function() {
-            descriptionElement.textContent = defaultMessage;
-            descriptionElement.style.opacity = '0.7';
+        card.addEventListener('mouseleave', function() {
+            descriptionElement.textContent = "Select a project to see details.";
+            descriptionElement.style.color = "#666";
         });
     });
 });

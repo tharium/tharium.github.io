@@ -2,39 +2,116 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/favicons/site.webmanifest">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
-
     <script type="module" src="animation_script.js" defer></script>
     <script src="script.js" defer></script>
-    
     <title>Tyler Harris</title>
 </head>
 <body class="main">
-    <canvas class="main-content" id="particle-background"></canvas>
+    <canvas id="particle-background"></canvas>
 
-    <div class="name-container">
-        <div class="name">Tyler Harris</div>
-    </div>
-
-    <div class="button-container">
-        <button class="button" id="links-button">Links</button>
-        <div class="links-container" id="links-dropdown">
-            <a href="https://github.com/tharium">Github</a>
-            <a href="https://www.linkedin.com/in/tyler-harris-49455827b">LinkedIn</a>
-            <a href="https://codepen.io/tharium">CodePen</a>
+    <header class="top-nav">
+        <div class="name-container">
+            <h1 class="name">Tyler Harris</h1>
+            <p class="subtitle">Computer Science</p>
         </div>
-        <a href="projects.html" class="project-link">Projects</a>
-    </div>
 
+        <div class="button-container">
+            <div class="dropdown">
+                <button class="button" id="links-button">Links</button>
+                <div class="links-container" id="links-dropdown">
+                    <a href="https://github.com/tharium" target="_blank">Github</a>
+                    <a href="https://www.linkedin.com/in/tyler-harris-49455827b" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <main class="content-wrapper">
+        <section class="portfolio-grid">
+            <div class="project-card" data-description="3D LiDAR simulator developed in C, implementing ray casting and scene generation.">
+                <div class="project-image-path" style="background-image: url('/images/3d2_demo.gif');"></div>
+                <div class="project-info">
+                    <h3>3D LiDAR Simulator</h3>
+                    <span class="tag">C / 3D</span>
+                </div>
+                <a href="https://github.com/tharium/lidar-sim" target="_blank" class="full-link"></a>
+            </div>
+
+            <div class="project-card" data-description="Edge AI project using ESP32 CSI (Channel State Information) to detect hand gestures via WiFi disturbance. Features a Python-based processing pipeline and Neural Network classifier.">
+                <div class="project-image-path" style="background-image: url('/images/esp32_wroom.png');"></div>
+                <div class="project-info">
+                    <h3>WiFi Gesture Recognition</h3>
+                    <span class="tag">ESP32 / Python / ML</span>
+                </div>
+                <a href="https://github.com/tharium" target="_blank" class="full-link"></a>
+            </div>
+            <div class="project-card" data-description="[In Progress] Building the foundation of a micro-kernel. Focus is on Task Control Blocks and priority-based scheduling.">
+                <div class="project-image-path" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800'); opacity: 0.4;"></div>
+                <div class="project-info">
+                    <h3>RTOS Kernel</h3>
+                    <span class="tag">C / Systems</span>
+                    <span class="tag status-tag">WIP</span>
+                </div>
+                <a href="https://github.com/tharium" target="_blank" class="full-link"></a>
+            </div>
+        </section>
+        <section class="skills-section">
+            <h2 class="section-title">Technical Proficiency</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Languages</h4>
+                    <p>C, Java, Python, SQL</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Frameworks & Platforms</h4>
+                    <p>CUDA, PyTorch, Django, JavaFX</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools</h4>
+                    <p>Git, Linux, NumPy</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Interests</h4>
+                    <p>Modeling & Simulation</p>
+                    <p>Kernel Architecture</p>
+                    <p>TinyML</p>
+                </div>
+            </div>
+        </section>
+        <section class="education-section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="edu-card highlighted-card">
+                <div class="edu-header">
+                    <h3>M.S. in Computer Science</h3>
+                    <span class="date-tag">Expected 2027</span>
+                </div>
+                <p class="institution">Eastern Washington University</p>
+                <div class="research-focus">
+                    <strong>Thesis Research:</strong> 
+                    <p>Implementing On-Device Reinforcement Learning (Q-Learning) for Microcontrollers.</p>
+                    <ul>
+                        <li>Optimizing model compression techniques (Pruning & Quantization) for bare-metal deployment.</li>
+                        <li>Developing C-based training loops for real-time edge intelligence.</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="edu-card">
+                <div class="edu-header">
+                    <h3>Bachelor of Computer Science</h3>
+                    <span class="date-tag">Completed 2025</span>
+                </div>
+                <p class="institution">Eastern Washington University</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="description-area">
+        <p id="dynamic-description">Select a project to see details.</p>
+    </footer>
 </body>
 </html>
